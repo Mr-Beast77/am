@@ -14,8 +14,8 @@ git config --global user.email "khalakuzzamanapon5@gmail.com"
 git config --global color.ui true
 
 brew install ccache &
-mkdir -p ~/aosp/untitled/aex
-cd ~/aosp/untitled/aex
+mkdir -p /Users/runner/aosp/untitled/aex
+cd /Users/runner/aosp/untitled/aex
 repo init --depth=1 -u git://github.com/AospExtended/manifest.git -b 11.x -g default,-notdefault,-device,-mips
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 30 device/xiaomi/mido
 
