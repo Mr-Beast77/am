@@ -25,7 +25,8 @@ repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync 
 	platform/prebuilts/build-tools \
 	platform/developers/build \
 	platform/build/blueprint \
-	vendor/aosp
+	vendor/aosp \
+	platform/prebuilts/go/darwin-x86 
 
 
 cd build/soong/
