@@ -1,9 +1,12 @@
 name: aosp
 on: push
+defaults:
+  run:
+    shell: bash
+
 jobs:
   job:
     runs-on: macos-latest
-    shell: bash
     strategy:
       matrix: 
         run: ['run1', 'run2']
