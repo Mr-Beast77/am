@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-      - hi=ok
-      - echo $hi
+       hi=ok
+       echo $hi
     - run: echo common
     - run: echo make ${{ matrix.run}}
