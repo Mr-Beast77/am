@@ -8,7 +8,7 @@ mkdir ~/bin
 PATH=~/bin:$PATH
 ulimit -S -n 20480
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-#chmod a+x ~/bin/repo
+chmod a+x ~/bin/repo
 git config --global user.name "Apon77"
 git config --global user.email "khalakuzzamanapon5@gmail.com"
 git config --global color.ui true
