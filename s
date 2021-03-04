@@ -1,8 +1,7 @@
 #!/bin/bash
 git clone https://github.com/apon77/linux --depth 1 ~/linux > /dev/null
 source ~/linux/others/append_bashrc.sh
-sudo apt -qq install tmate > /dev/null 2>&1
-#sleep 160
+brew install tmate
 tmate -S /tmp/tmate.sock new-session -d               # Launch tmate in a headless mode
 tmate -S /tmp/tmate.sock wait tmate-ready             # Blocks until the SSH connection is established
 
