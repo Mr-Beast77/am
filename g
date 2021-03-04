@@ -24,7 +24,8 @@ repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync 
 	platform_build \
 	platform/prebuilts/build-tools \
 	platform/developers/build \
-	platform/build/blueprint
+	platform/build/blueprint \
+	vendor/aosp
 
 
 cd build/soong/
