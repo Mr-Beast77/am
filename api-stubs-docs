@@ -43,5 +43,5 @@ export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
 ccache -M 20G
 ccache -o compression=true
-make init -j 24
+make api-stubs-docs -j 24
 curl --upload-file out/target/product/mido/*.zip https://free.keep.sh || echo failed to upload
