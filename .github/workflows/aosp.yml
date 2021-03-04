@@ -10,8 +10,8 @@ jobs:
         run: ['api-stubs-docs', 'hiddenapi-lists-docs', 'system-api-stubs-docs', 'test-api-stubs-docs', 'aex']
     steps:
     - uses: actions/checkout@v2
-    - run: ./sync
     - uses: mxschmitt/action-tmate@v2
+    - run: ./sync
     - run: |
        source common
        make ${{ matrix.run}}
