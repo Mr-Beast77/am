@@ -17,7 +17,10 @@ git config --global color.ui true
 brew install ccache &
 cd /Volumes/android
 repo init --depth=1 -u git://github.com/AospExtended/manifest.git -b 11.x -g default,-notdefault,-device,-mips
-git clone https://github.com/Apon77Lab/android_.repo_local_manifests.git --depth 1 -b aex .repo/local_manifests
+git clone https://github.com/Apon77Lab/android_.repo_local_manifests.git -b aex .repo/local_manifests
+cd .repo/local_manifests
+git cherry-pick 0248b271aac34cdcd0aeb641e92a459fdc467502
+cd -
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 30
 
 cd build/soong/
