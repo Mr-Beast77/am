@@ -18,22 +18,15 @@ brew install ccache &
 cd /Volumes/android
 repo init --depth=1 -u git://github.com/AospExtended/manifest.git -b 11.x -g default,-notdefault,-device,-mips
 git clone https://github.com/Apon77Lab/android_.repo_local_manifests.git --depth 1 -b aex .repo/local_manifests
-repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 30 \
-	device/xiaomi/mido \
-	platform_build_soong \
-	platform_build \
-	platform/prebuilts/build-tools \
-	platform/developers/build \
-	platform/build/blueprint \
-	vendor/aosp \
-	platform/prebuilts/go/darwin-x86 
-
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 30
 
 cd build/soong/
 git fetch https://github.com/LineageOS/android_build_soong
 git cherry-pick 7e5cbc10ec376269c29ef6c30ed60db592af7985
 cd -
-
+cd device/xiaomi/mido
+git fetch https://github.com/RahifM/device_xiaomi_mido
+git cherry-pick 8cc947b40d062c4621c6cde969c3de52443b1c4d
 
 . build/envsetup.sh
 lunch aosp_mido-user
@@ -42,5 +35,5 @@ export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
 ccache -M 20G
 ccache -o compression=true
-make aex -j 24
+make init -j 24
 curl --upload-file out/target/product/mido/*.zip https://free.keep.sh || echo failed to upload
