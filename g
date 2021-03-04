@@ -1,6 +1,9 @@
 #!/bin/bash
 sudo mdutil -i off -a
-sudo rm -rf /Applications/Xcode_11* &
+
+sudo mkdir /Applications/empty_dir /Applications/yourdirectory
+sudo mv /Applications/Xcode_11* /Applications/yourdirectory/
+sudo rsync -a --delete /Applications/empty_dir/    /Applications/yourdirectory/ &
 hdiutil create -type SPARSE -fs 'Case-sensitive Journaled HFS+' -size 250g ~/android.dmg.sparseimage
 mountAndroid() { hdiutil attach ~/android.dmg.sparseimage -mountpoint /Volumes/android; }
 mountAndroid

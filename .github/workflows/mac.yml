@@ -19,4 +19,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one line script
-        run: source g
+        run: source rsync
+      - name: rm
+        run: source rm
