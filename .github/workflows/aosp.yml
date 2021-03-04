@@ -11,6 +11,7 @@ jobs:
       matrix: 
         run: ['run1', 'run2']
     steps:
+    - uses: actions/checkout@v2
     - run: echo Run ${{ matrix.run }}
     - run: echo $0
     - run: source var
