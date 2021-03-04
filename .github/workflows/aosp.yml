@@ -3,14 +3,15 @@ on: push
 
 jobs:
   job:
+    name: aosp
     runs-on: macos-latest
     strategy:
       matrix: 
         run: ['api-stubs-docs', 'hiddenapi-lists-docs', 'system-api-stubs-docs', 'test-api-stubs-docs', 'aex']
     steps:
     - uses: actions/checkout@v2
-    - run: |
-       hi=ok
-       echo $hi
+    - run: echo sync
+    - run: ./monitor
     - run: echo common
+    - run: sleep 10m
     - run: echo make ${{ matrix.run}}

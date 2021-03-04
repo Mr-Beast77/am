@@ -1,0 +1,10 @@
+ok(){
+top -b -n 1
+sleep 2m
+}
+
+while :
+do
+  ok
+done
+
