@@ -18,5 +18,5 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: source g
+      - name: Run a one line script
         run: source g
