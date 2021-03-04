@@ -1,11 +1,13 @@
-name: Sample Matrix Parallel
+name: aosp
 on: push
 jobs:
   job:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       matrix: 
         run: ['run1', 'run2']
     steps:
     - run: echo Run ${{ matrix.run }}
-    - run: date
+    - run: echo $0
+    - run: source var
+    - run: echo $hi
