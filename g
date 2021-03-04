@@ -23,6 +23,7 @@ repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync 
 cd build/soong/
 git fetch https://github.com/LineageOS/android_build_soong
 git cherry-pick 7e5cbc10ec376269c29ef6c30ed60db592af7985
+sudo xcode-select -s /Applications/Xcode_12.app/Contents/Developer
 cd -
 cd device/xiaomi/mido
 git fetch https://github.com/RahifM/device_xiaomi_mido
