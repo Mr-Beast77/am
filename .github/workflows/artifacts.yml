@@ -17,6 +17,8 @@ jobs:
 
     - run: mkdir -p path/to/artifact
 
+    - run: echo ${{ matrix.run }}
+
     - run: echo hello > path/to/artifact/world.txt
 
     - run: echo 3nd > path/to/artifact/3nd.txt
