@@ -26,3 +26,7 @@ jobs:
         name: my-artifact
         path: path/to/artifact/
         retention-days: 3
+
+    - uses: geekyeggo/delete-artifact@v1
+      with:
+        name: my-artifact
