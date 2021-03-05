@@ -17,6 +17,11 @@ jobs:
 
     - run: mkdir -p path/to/artifact
 
+    - uses: actions/download-artifact@v2
+        with: my-artifact
+        path: path/to/artifact
+
+    - run: ls path/to/artifact
 
     - run: echo hello > path/to/artifact/world.txt
 
@@ -33,7 +38,7 @@ jobs:
 
 
   delete:
-    name: delete artifats
+    name: delete artifacts
     runs-on: ubuntu-20.04
     needs: [job]
     steps:
