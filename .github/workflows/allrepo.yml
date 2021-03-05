@@ -50,7 +50,7 @@ jobs:
     needs: job
     steps:
       - uses: aochmann/actions-download-artifacts@1.0.4
-         with:
+        with:
          name: my-artifact
          latest: true
          path: adir
