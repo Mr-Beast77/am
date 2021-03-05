@@ -1,0 +1,58 @@
+name: allrepo
+on: push
+
+jobs:
+  job:
+    name: allrepo
+    runs-on: macos-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix: 
+        #run: ['api-stubs-docs', 'system-api-stubs-docs', 'test-api-stubs-docs', 'aex']
+        #run: ['aex']
+        run: ['api-stubs-docs', 'system-api-stubs-docs']
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/download-artifact@v2
+      continue-on-error: true
+      with:
+        name: my-artifact
+        path: adir
+
+    - run: echo ${{ matrix.run }} > adir/hi.txt
+      continue-on-error: true
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: adir
+        retention-days: 2
+    - run: ls adir
+
+
+  download:
+    name: download check
+    runs-on: macos-latest
+    needs: [job]
+    steps:
+    - uses: actions/download-artifact@v2
+      continue-on-error: true
+      with:
+        name: my-artifact
+        path: adir
+    - run: ls adir
+   
+  dall: 
+    name: dall
+    needs: job
+    uses: aochmann/actions-download-artifacts@1.0.4
+    with:
+      name: my-artifact
+      latest: true
+      path: adir
+      repo: mr-beast77/am
+    run: |
+      ls adir
+      ls

@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
-        #run: ['com.android.media', 'api-stubs-docs', 'system-api-stubs-docs', 'test-api-stubs-docs', 'aex']
+        #run: ['api-stubs-docs', 'system-api-stubs-docs', 'test-api-stubs-docs', 'aex']
         run: ['aex']
     steps:
     - uses: actions/checkout@v2
