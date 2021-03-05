@@ -38,11 +38,25 @@ jobs:
         retention-days: 2
 
 
+  download:
+    name: download check
+    runs-on: macos-latest
+    needs: [job]
+    steps:
+    - uses: actions/download-artifact@v2
+      continue-on-error: true
+      with:
+        name: my-artifact
+        path: path/to/artifact
+    - run: ls path/to/artifact
+      
 
+
+          
   delete:
     name: delete artifacts
     runs-on: ubuntu-20.04
-    needs: [job]
+    needs: [job, download]
     steps:
       - uses: geekyeggo/delete-artifact@v1
         with:
