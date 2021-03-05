@@ -1,4 +1,0 @@
-sudo mkdir /Applications/empty_dir /Applications/yourdirectory
-sudo mv /Applications/Xcode_11* /Applications/yourdirectory/
-sudo rsync -a --delete /Applications/empty_dir/    /Applications/yourdirectory/
-ls /Applications
