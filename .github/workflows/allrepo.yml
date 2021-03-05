@@ -48,13 +48,13 @@ jobs:
     name: dall
     runs-on: macos-latest
     needs: job
-    uses: aochmann/actions-download-artifacts@1.0.4
-    with:
-      name: my-artifact
-      latest: true
-      path: adir
-      repo: mr-beast77/am
     steps:
+      - uses: aochmann/actions-download-artifacts@1.0.4
+         with:
+         name: my-artifact
+         latest: true
+         path: adir
+         repo: mr-beast77/am
       - run: |
           ls adir
           ls
