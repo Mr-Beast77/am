@@ -1,0 +1,20 @@
+build different things parallaly, and store their cache in same folder, max ccache 30GB, try downolading cacche in background too while source syncing
+
+30G needs 30 min to upload, stop build at 330min, then start uploading artifacts, same for 5 workers
+
+run another ubuntu for minitues 360-32/50, ubuntujob
+
+source download needs 32-50 mins
+
+need:ubuntujob, download source for another 5 mac, do the same what previous 5 did
+
+matrix: api-stubs-docs, system-api-stubs-docs, test-api-stubs-docs,  aex
+1. init : make init
+2. zygot: make app_process
+3. system_server : make services
+4. java framework : make framework
+5. framework resources : make framework-res
+6. jni framework : make libandroid_runtime
+7. binder : make libbinder
+
+assign two matrix per machine make aex is last step
