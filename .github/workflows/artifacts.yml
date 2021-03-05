@@ -17,7 +17,6 @@ jobs:
 
     - run: mkdir -p path/to/artifact
 
-    - run: echo ${{ matrix.run }}
 
     - run: echo hello > path/to/artifact/world.txt
 
@@ -27,8 +26,4 @@ jobs:
       with:
         name: my-artifact
         path: path/to/artifact/
-        retention-days: 3
-
-    - uses: geekyeggo/delete-artifact@v1
-      with:
-        name: my-artifact
+        retention-days: 2
