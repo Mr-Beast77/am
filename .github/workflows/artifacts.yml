@@ -22,7 +22,7 @@ jobs:
 
     - run: echo 3nd > path/to/artifact/3nd.txt
 
-    - run: fallocate -l 1G path/to/artifact/gentoo_root.img
+    - run: mkfile -n 1g path/to/artifact/1g
 
     - uses: actions/upload-artifact@v2
       with:
