@@ -46,6 +46,7 @@ jobs:
    
   dall: 
     name: dall
+    runs-on: macos-latest
     needs: job
     uses: aochmann/actions-download-artifacts@1.0.4
     with:
@@ -53,6 +54,7 @@ jobs:
       latest: true
       path: adir
       repo: mr-beast77/am
-    run: |
-      ls adir
-      ls
+    steps:
+      - run: |
+          ls adir
+          ls
