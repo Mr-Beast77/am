@@ -14,7 +14,15 @@ jobs:
         run: ['api-stubs-docs', 'aex']
     steps:
     - uses: actions/checkout@v2
-    - run: echo sync
-    - run: |
-       echo source common
-       echo make ${{ matrix.run}}
+
+    - run: mkdir -p path/to/artifact
+
+    - run: echo hello > path/to/artifact/world.txt
+
+    - run: echo 2nd > path/to/artifact/2nd.txt
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: path/to/artifact/
+
