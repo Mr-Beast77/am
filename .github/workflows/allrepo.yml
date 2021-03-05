@@ -20,7 +20,7 @@ jobs:
       with:
         name: my-artifact
         path: adir
-    - run: mkdir adir
+    - run: mkdir -p adir
 
     - run: echo ${{ matrix.run }} > adir/hi.txt
       continue-on-error: true
@@ -30,7 +30,7 @@ jobs:
         name: my-artifact
         path: adir
         retention-days: 2
-    - run: ls adir
+    - run: ls -R adir
 
 
   download:
@@ -43,7 +43,7 @@ jobs:
       with:
         name: my-artifact
         path: adir
-    - run: ls adir
+    - run: ls -R adir
    
   dall: 
     name: dall
@@ -57,5 +57,5 @@ jobs:
          path: adir
          repo: mr-beast77/am
       - run: |
-          ls adir
-          ls
+          ls -R adir
+      - run: ls -R
