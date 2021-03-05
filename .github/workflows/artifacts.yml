@@ -19,7 +19,7 @@ jobs:
 
     - run: echo hello > path/to/artifact/world.txt
 
-    - run: echo 2nd > path/to/artifact/2nd.txt
+    - run: echo 3nd > path/to/artifact/3nd.txt
 
     - uses: actions/upload-artifact@v2
       with:
