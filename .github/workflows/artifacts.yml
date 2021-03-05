@@ -18,6 +18,7 @@ jobs:
     - run: mkdir -p path/to/artifact
 
     - uses: actions/download-artifact@v2
+      continue-on-error: true
       with:
         name: my-artifact
         path: path/to/artifact
