@@ -1,0 +1,9 @@
+cd /Volumes/android/aex
+. build/envsetup.sh
+lunch aosp_mido-user
+export CCACHE_DIR=/Volumes/android/ccache
+export CCACHE_EXEC=$(which ccache)
+export USE_CCACHE=1
+ccache -M 20G
+ccache -o compression=true
+#curl --upload-file out/target/product/mido/*.zip https://free.keep.sh || echo failed to upload

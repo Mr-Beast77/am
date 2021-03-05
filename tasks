@@ -1,4 +1,4 @@
-build different things parallaly, and store their cache in same folder, max ccache 30GB, try downolading cacche in background too while source syncing
+build different things parallaly, and store their cache in same folder, max ccache 20GB, try downolading cacche in background too while source syncing
 
 30G needs 30 min to upload, stop build at 330min, then start uploading artifacts, same for 5 workers
 

@@ -1,0 +1,189 @@
+name: aosp
+on: push
+
+jobs:
+  job1:
+    name: api, system
+    runs-on: macos-latest
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@v2
+    - run: ./volume
+    - uses: aochmann/actions-download-artifact@1.0.4
+      continue-on-error: true
+      with:
+        name: ccache
+        latest: true
+        path: /Volumes/android/ccache
+        repo: mr-beast77/am
+    - continue-on-error: true
+      run: ./sync
+    - continue-on-error: true
+      run: |
+       source common
+       make api-stubs-docs
+       make system-api-stubs-docs
+    - uses: actions/upload-artifact@v2
+      continue-on-error: true
+      with:
+        name: ccache
+        path: /Volumes/android/ccache
+
+
+  job2:
+    name: test-api, init
+    runs-on: macos-latest
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@v2
+    - run: ./volume
+    - uses: aochmann/actions-download-artifact@1.0.4
+      continue-on-error: true
+      with:
+        name: ccache
+        latest: true
+        path: /Volumes/android/ccache
+        repo: mr-beast77/am
+    - continue-on-error: true
+      run: ./sync
+    - continue-on-error: true
+      run: |
+       source common
+       make test-api-stubs-docs
+       make init
+    - uses: actions/upload-artifact@v2
+      continue-on-error: true
+      with:
+        name: ccache
+        path: /Volumes/android/ccache
+
+  job3:
+    name: app_process, services
+    runs-on: macos-latest
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@v2
+    - run: ./volume
+    - uses: aochmann/actions-download-artifact@1.0.4
+      continue-on-error: true
+      with:
+        name: ccache
+        latest: true
+        path: /Volumes/android/ccache
+        repo: mr-beast77/am
+    - continue-on-error: true
+      run: ./sync
+    - continue-on-error: true
+      run: |
+       source common
+       make app_process
+       make services
+    - uses: actions/upload-artifact@v2
+      continue-on-error: true
+      with:
+        name: ccache
+        path: /Volumes/android/ccache
+
+  job4:
+    name: framework, framework-res
+    runs-on: macos-latest
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@v2
+    - run: ./volume
+    - uses: aochmann/actions-download-artifact@1.0.4
+      continue-on-error: true
+      with:
+        name: ccache
+        latest: true
+        path: /Volumes/android/ccache
+        repo: mr-beast77/am
+    - continue-on-error: true
+      run: ./sync
+    - continue-on-error: true
+      run: |
+       source common
+       make framework
+       make framework-res
+    - uses: actions/upload-artifact@v2
+      continue-on-error: true
+      with:
+        name: ccache
+        path: /Volumes/android/ccache
+
+  job5:
+    name: runtime,libbinder
+    runs-on: macos-latest
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@v2
+    - run: ./volume
+    - uses: aochmann/actions-download-artifact@1.0.4
+      continue-on-error: true
+      with:
+        name: ccache
+        latest: true
+        path: /Volumes/android/ccache
+        repo: mr-beast77/am
+    - continue-on-error: true
+      run: ./sync
+    - continue-on-error: true
+      run: |
+       source common
+       make libandroid_runtime
+       make libbinder
+    - uses: actions/upload-artifact@v2
+      continue-on-error: true
+      with:
+        name: ccache
+        path: /Volumes/android/ccache
+
+###################################################
+
+  ubuntu:
+    name: ubuntu
+    runs-on: ubuntu:20.04
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@v2
+    - continue-on-error: true
+      run: |
+       echo sleeping
+       sleep 1m
+       echo slept
+
+
+#####################################################
+
+
+
+
+
+
+  final:
+    name: aex
+    needs: [job1, job2, job3, job4, job5]
+    runs-on: macos-latest
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@v2
+    - run: ./volume
+    - uses: aochmann/actions-download-artifact@1.0.4
+      continue-on-error: true
+      with:
+        name: ccache
+        latest: true
+        path: /Volumes/android/ccache
+        repo: mr-beast77/am
+    - continue-on-error: true
+      run: ./sync
+    - continue-on-error: true
+      run: |
+       source final
+       make aex
+    - uses: actions/upload-artifact@v2
+      continue-on-error: true
+      with:
+        name: ccache
+        path: /Volumes/android/ccache
+        retention-days: 2
