@@ -20,6 +20,7 @@ jobs:
       with:
         name: my-artifact
         path: adir
+    - run: mkdir adir
 
     - run: echo ${{ matrix.run }} > adir/hi.txt
       continue-on-error: true
@@ -49,7 +50,7 @@ jobs:
     runs-on: macos-latest
     needs: job
     steps:
-      - uses: aochmann/actions-download-artifacts@1.0.4
+      - uses: aochmann/actions-download-artifact@1.0.4
         with:
          name: my-artifact
          latest: true
