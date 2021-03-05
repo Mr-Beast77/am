@@ -3,7 +3,7 @@ on: push
 
 jobs:
   job:
-    name: aosp
+    name: artifacts
     runs-on: macos-latest
     continue-on-error: true
     strategy:
@@ -11,31 +11,25 @@ jobs:
       matrix: 
         #run: ['com.android.media', 'api-stubs-docs', 'system-api-stubs-docs', 'test-api-stubs-docs', 'aex']
         #run: ['aex']
-        run: ['api-stubs-docs', 'aex']
+        run: ['api-stubs-docs', 'system-api-stubs-docs']
     steps:
     - uses: actions/checkout@v2
-
-    - run: mkdir -p path/to/artifact
 
     - uses: actions/download-artifact@v2
       continue-on-error: true
       with:
         name: my-artifact
-        path: path/to/artifact
+        path: /Volumes/android/aex
 
-    - run: ls path/to/artifact
-
-    - run: echo hello > path/to/artifact/world.txt
-
-    - run: echo 3nd > path/to/artifact/3nd.txt
-
-    - run: mkfile -n 1g path/to/artifact/1g
+    - run: ./sync
+      continue-on-error: true
 
     - uses: actions/upload-artifact@v2
       with:
         name: my-artifact
-        path: path/to/artifact/
+        path: /Volumes/android/aex
         retention-days: 2
+    - run: ls /Volumes/android
 
 
   download:
@@ -43,12 +37,17 @@ jobs:
     runs-on: macos-latest
     needs: [job]
     steps:
+    - run: |
+       hdiutil create -type SPARSE -fs 'Case-sensitive Journaled HFS+' -size 250g ~/android.dmg.sparseimage
+       mountAndroid() { hdiutil attach ~/android.dmg.sparseimage -mountpoint /Volumes/android; }
+       mountAndroid
+       ulimit -S -n 20480
     - uses: actions/download-artifact@v2
       continue-on-error: true
       with:
         name: my-artifact
-        path: path/to/artifact
-    - run: ls path/to/artifact
+        path: /Volumes/android/aex
+    - run: ls /Volumes/android
       
 
 

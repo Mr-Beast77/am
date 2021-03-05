@@ -1,4 +1,4 @@
-cd /Volumes/android
+cd /Volumes/android/aex
 . build/envsetup.sh
 lunch aosp_mido-user
 export CCACHE_DIR=/Volumes/android/ccache

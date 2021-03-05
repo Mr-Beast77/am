@@ -3,6 +3,7 @@ sudo mdutil -i off -a
 sudo mkdir /Applications/empty_dir /Applications/yourdirectory
 sudo mv /Applications/Xcode_11* /Applications/yourdirectory/
 sudo rsync -a --delete /Applications/empty_dir/    /Applications/yourdirectory/ &
+
 hdiutil create -type SPARSE -fs 'Case-sensitive Journaled HFS+' -size 250g ~/android.dmg.sparseimage
 mountAndroid() { hdiutil attach ~/android.dmg.sparseimage -mountpoint /Volumes/android; }
 mountAndroid
@@ -17,13 +18,14 @@ git config --global user.email "khalakuzzamanapon5@gmail.com"
 git config --global color.ui true
 
 brew install ccache &
-cd /Volumes/android
+mkdir -p /Volumes/android/aex
+cd /Volumes/android/aex
 repo init --depth=1 -u git://github.com/AospExtended/manifest.git -b 11.x -g default,-notdefault,-device,-mips
 git clone https://github.com/Apon77Lab/android_.repo_local_manifests.git -b aex .repo/local_manifests
 cd .repo/local_manifests
 git cherry-pick 0248b271aac34cdcd0aeb641e92a459fdc467502
 cd -
-repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 30
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 30 vendor/aosp
 
 cd build/soong/
 git fetch https://github.com/LineageOS/android_build_soong
