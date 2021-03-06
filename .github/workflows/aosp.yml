@@ -21,11 +21,11 @@ jobs:
     - continue-on-error: true
       run: |
        source common
-       make api-stubs-docs
+       make api-stubs-docs -j6
     - continue-on-error: true
       run: |
        source common
-       make system-api-stubs-docs
+       make system-api-stubs-docs -j6
     - uses: actions/upload-artifact@v2
       continue-on-error: true
       with:
@@ -52,15 +52,15 @@ jobs:
     - continue-on-error: true
       run: |
        source common
-       make bootimage
+       make bootimage -j6
     - continue-on-error: true
       run: |
        source common
-       make test-api-stubs-docs
+       make test-api-stubs-docs -j6
     - continue-on-error: true
       run: |
        source common
-       make init
+       make init -j6
     - uses: actions/upload-artifact@v2
       continue-on-error: true
       with:
@@ -86,11 +86,11 @@ jobs:
     - continue-on-error: true
       run: |
        source common
-       make app_process
+       make app_process -j6
     - continue-on-error: true
       run: |
        source common
-       make services
+       make services -j6
     - uses: actions/upload-artifact@v2
       continue-on-error: true
       with:
@@ -116,11 +116,11 @@ jobs:
     - continue-on-error: true
       run: |
        source common
-       make framework
+       make framework -j6
     - continue-on-error: true
       run: |
        source common
-       make framework-res
+       make framework-res -j6
     - uses: actions/upload-artifact@v2
       continue-on-error: true
       with:
@@ -146,11 +146,11 @@ jobs:
     - continue-on-error: true
       run: |
        source common
-       make libandroid_runtime
+       make libandroid_runtime -j6
     - continue-on-error: true
       run: |
        source common
-       make libbinder
+       make libbinder -j 6
     - uses: actions/upload-artifact@v2
       continue-on-error: true
       with:
@@ -180,7 +180,7 @@ jobs:
       timeout-minutes: 290
       run: |
        source final
-       make aex
+       make aex -j 9
     - uses: actions/upload-artifact@v2
       continue-on-error: true
       with:
