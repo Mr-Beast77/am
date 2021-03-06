@@ -35,3 +35,7 @@ cd frameworks/av
 git fetch --unshallow aex
 git revert 87b380d9c1 --no-edit
 cd -
+
+cd external/dng_sdk
+git fetch https://android.googlesource.com/platform/external/dng_sdk refs/changes/88/1236988/1 && git cherry-pick FETCH_HEAD
+cd -

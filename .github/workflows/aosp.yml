@@ -22,6 +22,9 @@ jobs:
       run: |
        source common
        make api-stubs-docs
+    - continue-on-error: true
+      run: |
+       source common
        make system-api-stubs-docs
     - uses: actions/upload-artifact@v2
       continue-on-error: true
@@ -50,6 +53,9 @@ jobs:
       run: |
        source common
        make test-api-stubs-docs
+    - continue-on-error: true
+      run: |
+       source common
        make init
     - uses: actions/upload-artifact@v2
       continue-on-error: true
@@ -77,6 +83,9 @@ jobs:
       run: |
        source common
        make app_process
+    - continue-on-error: true
+      run: |
+       source common
        make services
     - uses: actions/upload-artifact@v2
       continue-on-error: true
@@ -104,6 +113,9 @@ jobs:
       run: |
        source common
        make framework
+    - continue-on-error: true
+      run: |
+       source common
        make framework-res
     - uses: actions/upload-artifact@v2
       continue-on-error: true
@@ -131,6 +143,9 @@ jobs:
       run: |
        source common
        make libandroid_runtime
+    - continue-on-error: true
+      run: |
+       source common
        make libbinder
     - uses: actions/upload-artifact@v2
       continue-on-error: true
@@ -138,20 +153,7 @@ jobs:
         name: ccache
         path: /Volumes/android/ccache
 
-###################################################
-
-  ubuntu:
-    name: ubuntu
-    runs-on: ubuntu:20.04
-    continue-on-error: true
-    steps:
-    - uses: actions/checkout@v2
-    - continue-on-error: true
-      run: |
-       echo sleeping
-       sleep 1m
-       echo slept
-
+#####################################################
 
 #####################################################
 
@@ -173,6 +175,7 @@ jobs:
     - continue-on-error: true
       run: ./sync
     - continue-on-error: true
+      timeout-minutes: 290
       run: |
        source final
        make aex
