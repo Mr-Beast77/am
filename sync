@@ -27,6 +27,7 @@ cd -
 cd device/xiaomi/mido
 git fetch https://github.com/RahifM/device_xiaomi_mido
 git cherry-pick 8cc947b40d062c4621c6cde969c3de52443b1c4d
+git cherry-pick 925f02cbf395d56cc39dbdaec67c93fea2116618
 cd -
 
 cd frameworks/av

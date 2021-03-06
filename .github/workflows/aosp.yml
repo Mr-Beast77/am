@@ -34,7 +34,7 @@ jobs:
 
 
   job2:
-    name: test-api, init
+    name: bootimage, test-api, init
     runs-on: macos-latest
     continue-on-error: true
     steps:
@@ -52,7 +52,12 @@ jobs:
     - continue-on-error: true
       run: |
        source common
+       make bootimage
+    - continue-on-error: true
+      run: |
+       source common
        make test-api-stubs-docs
+    - continue-on-error: true
     - continue-on-error: true
       run: |
        source common
