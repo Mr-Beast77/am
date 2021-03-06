@@ -169,13 +169,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: ./volume
-    - uses: aochmann/actions-download-artifact@1.0.4
+    - uses: actions/download-artifact@v2
       continue-on-error: true
       with:
         name: ccache
-        latest: true
         path: /Volumes/android/ccache
-        repo: mr-beast77/am
     - continue-on-error: true
       run: ./sync
     - continue-on-error: true
