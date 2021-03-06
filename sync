@@ -27,7 +27,8 @@ cd -
 cd device/xiaomi/mido
 git fetch https://github.com/RahifM/device_xiaomi_mido
 git cherry-pick 8cc947b40d062c4621c6cde969c3de52443b1c4d
-git cherry-pick 925f02cbf395d56cc39dbdaec67c93fea2116618
+git fetch https://github.com/Apon77/ppui prebuilt
+git cherry-pick f40c97efa94ead2d1415588a3d6f0764f05f1046
 git cherry-pick d6528e4895acb81d1220db3856f7c8fb18a201d8
 cd -
 
