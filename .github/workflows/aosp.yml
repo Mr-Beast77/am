@@ -58,7 +58,6 @@ jobs:
        source common
        make test-api-stubs-docs
     - continue-on-error: true
-    - continue-on-error: true
       run: |
        source common
        make init
