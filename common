@@ -4,6 +4,7 @@ lunch aosp_mido-user
 export CCACHE_DIR=/Volumes/android/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
+export ANDROID_QUIET_BUILD=true
 ccache -M 5G
 ccache -o compression=true
 #curl --upload-file out/target/product/mido/*.zip https://free.keep.sh || echo failed to upload
