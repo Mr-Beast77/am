@@ -35,8 +35,8 @@ cd -
 cd frameworks/av
 #git fetch https://github.com/Apon77Lab/platform_frameworks_av
 #git cherry-pick 966755004d8fedeadf0d87665c8e36e12ac773f7
-git fetch --unshallow aex
-git revert 87b380d9c1 --no-edit
+#git fetch --unshallow aex
+#git revert 87b380d9c1 --no-edit
 cd -
 
 cd external/dng_sdk
